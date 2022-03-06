@@ -18,3 +18,5 @@
 * [Wiki-ресурсы](wiki/index.md)
 * [Операционные системы и их репозитории](os/index.md)
 * [Библиотеки для языков программирования](prog_libs/index.md)
+* OS Android
+  * [FDroid](android/fdroid/index.md)
