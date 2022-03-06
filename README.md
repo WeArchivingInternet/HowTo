@@ -13,6 +13,7 @@
 ## ПО, через которое можно скачивать или архивировать ресурсы
 * [ArchiveBox - опенсурсный вебархив](https://github.com/ArchiveBox/ArchiveBox)
 * [Zeal - оффлайн документация для разработчиков](https://zealdocs.org/)
+  - Неофициальный список документации/фидов/cheatsheets которые были созданы пользователями - [раз](https://zealusercontributions.vercel.app/), [два](https://zealusercontributions.now.sh) 
 * [Kiwix - вики-ресурсы оффлайн](https://www.kiwix.org/en/)
 * [Gitea, есть возможность зеркалировать репозитории](https://gitea.io/ru-ru/)
 
