@@ -17,3 +17,4 @@
 * [Как скачать большую часть ресурсов](download/index.md)
 * [Wiki-ресурсы](wiki/index.md)
 * [Операционные системы и их репозитории](os/index.md)
+* [Nimble пакеты](nimble/index.md)
