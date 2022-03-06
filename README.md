@@ -14,7 +14,7 @@
 * [ArchiveBox - опенсурсный вебархив](https://github.com/ArchiveBox/ArchiveBox)
 * [Zeal - оффлайн документация для разработчиков](https://zealdocs.org/)
 * [Kiwix - вики-ресурсы оффлайн](https://www.kiwix.org/en/)
-* [Gitea, есть возможность зеркалировать репозитории](https://gitea.io/ru-ru/)
+* [Gitea - есть возможность зеркалировать репозитории](https://gitea.io/ru-ru/)
 
 ## Категории
 * [Как раздавать ресурсы](share/index.md)
