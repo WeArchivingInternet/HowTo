@@ -14,7 +14,9 @@
 
 ## Категории
 * [Как раздавать ресурсы](share/index.md)
-* [Как скачать большую часть ресурсов](download/index.md)
+* [Как скачать большую часть сайтов](download/index.md)
 * [Wiki-ресурсы](wiki/index.md)
 * [Операционные системы и их репозитории](os/index.md)
-* [Nimble пакеты](nimble/index.md)
+* [Библиотеки для языков программирования](prog_libs/index.md)
+* OS Android
+  * [FDroid](android/fdroid/index.md)
