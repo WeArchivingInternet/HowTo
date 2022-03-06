@@ -1,6 +1,6 @@
 # Nimble пакеты
 
-Задача: сдампать пакеты с [Nimble package directory](nimble.directory)
+Задача: сдампить пакеты с [Nimble package directory](nimble.directory)
 
 Дано:
 - репозиторий https://github.com/nim-lang/packages со списком всех пакетов в формате json
