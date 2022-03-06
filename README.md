@@ -12,6 +12,8 @@
 - Есть отличная программа под названием [Kiwix](https://www.kiwix.org/en/download/). Скачиваете её, распаковываете/устанавливаете и выбираете, что нужно скачать.
 
 ### Репозиторий ОС
+* CentOS
+  - [Вариант с reposync + nginx](https://hamsterden.ru/local-repository-for-yum/)
 - TODO: надо добавить, как бекапить репозитории Debian, ArchLinux, CentOS и т.д.
 
 ### Репозитории библиотек
