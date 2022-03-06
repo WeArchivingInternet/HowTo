@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 #С помощью wget скачивает файлы основываясь на index.xml файле репозитория.
 #linux-only, потому что Windows не может найти wget (хотя он есть)
+#index.xml скачивается дважды, т.к. лень делать путь к уже скачанному
 #3.7
 
 import sys, os
@@ -8,6 +9,7 @@ import xml.etree.ElementTree as ET
 
 repoMetaInfoFiles = ["index.html","index.xml","index.jar","categories.txt","index-v1.jar","index-v1.json","index.png","index.css", "status/running.json", "status/update.json"]
 iconsDirs = ["icons-120/", "icons-160/", "icons-240/","icons-320/","icons-480/", "icons-640/", "icons/"]
+
 if (len(sys.argv)<2 or sys.argv[1][-1]!='/'):
     print('''usage: f-droid.py <url>
 URL must end with '/'
@@ -18,8 +20,8 @@ Options:
     -nm - Don't download repository metainfo files
     -wq - Quiet wget''')
     exit(2)
-url = sys.argv[1]
 
+url = sys.argv[1]
 
 def downloadFile(fileUrl):
     #Параметр -x форсирует создание директорий
@@ -28,7 +30,6 @@ def downloadFile(fileUrl):
         os.system("wget -xNq " + fileUrl)
     else:
         os.system("wget -xN " + fileUrl)
-    
 
 def getIndexXmlTree():
     print("Parsing repo index.xml")
@@ -85,13 +86,12 @@ def downloadImages(root):
         for iconsDir in iconsDirs:
             downloadFile(url+iconsDir+img)
         
-    
 
 print("Downloading repo index.xml")
 if("-wq" in sys.argv):
     os.system("wget -Nq " + url + "index.xml")
 else:
-    os.system("wget -N" + url + "index.xml")
+    os.system("wget -N " + url + "index.xml")
 
 index = getIndexXmlTree()
 
