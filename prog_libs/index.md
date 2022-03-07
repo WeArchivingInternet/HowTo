@@ -5,3 +5,5 @@
 * C#
   * [Выгрузка всего NuGet на локальный диск](getNuget.md)
  
+* Python
+  * [Скачивание PyPI с помощью bandersnatch](pypi.md)
