@@ -25,3 +25,4 @@
 * [Библиотеки для языков программирования](prog_libs/index.md)
 * OS Android
   * [FDroid](android/fdroid/index.md)
+* [Git](git/index.md)
