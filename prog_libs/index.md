@@ -6,4 +6,4 @@
   * [Выгрузка всего NuGet на локальный диск](getNuget.md)
  
 * Python
-  * [Скачивание PyPI](pypi.md)
+  * [Скачивание PyPI с помощью bandersnatch](pypi.md)
