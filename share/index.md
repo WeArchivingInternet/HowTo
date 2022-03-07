@@ -74,7 +74,7 @@ Web клиент для работы с Direct Connect
 
 На Linux AirDC++ управляется с помощью Web интерфейса, что позволяет запускать его на серверах без графики. 
 
-После загрузки архива его можно разархивировать с помощью tar:
+Загрузив архив его можно разархивировать с помощью tar:
 
 ```sh
 tar -xfv airdcpp_2.11.2_webui-2.11.2_64-bit_portable.tar.gz ~/
@@ -85,14 +85,14 @@ tar -xfv airdcpp_2.11.2_webui-2.11.2_64-bit_portable.tar.gz ~/
 ```sh
 ~/airdcppd --configure
 ```
-Далее следуем инструкциям. Порт можно оставить по умолчанию. Пользователь и пароль вводятся для доступа к Web интерфейсу
+Cледуем инструкциям. Порт можно оставить по умолчанию. Пользователь и пароль вводятся для доступа к Web интерфейсу
 
 По завершению конфигурации можно запустить сервер
 
 ```sh
 ./airdcppd
 ```
-После запуска можно переходить в браузер, указав в адресную строку `http://<IP>:<PORT>` для дальнейшей настройки клиента. 
+После запуска можно переходить в браузер, указав в адресную строку `http://<IP>:<PORT>` для дальнейшей настройки клиента. Если вы настраивали на своей машине и не меняли порт, то адрес будет `http://localhost:5600`
 
 ![airdcpp_web](./images/airdcpp-web-login.jpeg)
 
@@ -118,7 +118,7 @@ tar -xfv airdcpp_2.11.2_webui-2.11.2_64-bit_portable.tar.gz ~/
 
 ![airdcpp_web](./images/airdcpp-web-hub-download-settings.jpeg)
 
-Теперь можно приступить к использованию aitDC++. Для этого нам нужно добавить hub. Для управления hab'ами, справой стороны, есть кнопка Hubs. 
+Теперь можно приступить к использованию aitDC++. Для этого нам нужно добавить hub. Для управления hab'ами, с правой стороны, есть кнопка Hubs. 
 
 ![airdcpp_web](./images/airdcpp-web-hubs-setup.jpeg)
 
@@ -131,13 +131,19 @@ tar -xfv airdcpp_2.11.2_webui-2.11.2_64-bit_portable.tar.gz ~/
 ![airdcpp_web](./images/airdcpp-web-hub-browse-share.jpeg)
 ![airdcpp_web](./images/airdcpp-web-hub-browse-user-share.jpeg)
 
+__ОБЯЗАТЕЛЬНО ПРОВЕРЯЙТЕ СКАЧАННЫЕ ФАЙЛЫ__
+
+Сканируйте их антивирусами ([ClamAV](https://github.com/Cisco-Talos/clamav)), качайте только от тех людей, которым лично __ВЫ__ доверяете!
+
+### Раздача файлов 
+
 Для раздачи своих файлов нужно:
 
 1. Перейти во вкладку `Share`
 
 ![airdcpp_web](./images/airdcpp-web-hub-whereis-share.jpeg)
 
-2. Справа внизу `Actions` -> `Add directory`
+2. Слева внизу `Actions` -> `Add directory`
 
 ![airdcpp_web](./images/airdcpp-web-hub-whereis-add-directory.jpeg)
 
@@ -146,3 +152,7 @@ tar -xfv airdcpp_2.11.2_webui-2.11.2_64-bit_portable.tar.gz ~/
 ![airdcpp_web](./images/airdcpp-web-hub-setup-share-directory.jpeg)
 
 После добавления файла он будет доступен всем участникам в hub'е
+
+## Будьте внимательны
+
+При раздаче файлов учасникам hub'а ваш IP адрес виден всем, что может быть не безопасным. Поэтому закрывайте порты и __БУДЬТЕ БДИТЕЛЬНЫ И ОСТОРОЖНЫ!__
