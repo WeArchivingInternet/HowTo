@@ -9,6 +9,8 @@
 * [Advanced Bash-Scripting Guide](https://tldp.org/LDP/abs/html/)
 * [Writing OS in Rust](https://os.phil-opp.com/)
 * [Intel 80x86 Assembly Language OpCodes](http://www.mathemainzel.info/files/x86asmref.html)
+* [The best hastebin](https://hastebin.kiriha.ru/)
+* [Online compiler for many languages](https://www.onlinegdb.com/)
 ### Редакторы
 * [A Great Vim Cheat Sheet](https://vimsheet.com/)
 * [Sublime Text](https://www.sublimetext.com/)
