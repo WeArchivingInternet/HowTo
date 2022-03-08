@@ -1,0 +1,25 @@
+name: resource
+description: "Добавить или изменить информацию о зеркалировании ресурса"
+title: "[Ресурс] "
+labels: 
+  - Ресурс
+assignees: 
+  - kiriharu
+body:
+  - type: dropdown
+    id: change-kind
+    attributes:
+      label: Тип изменения
+      options:
+        - Я хочу добавить ресурс  
+        - Я хочу изменить ресурс или информацию о ресурсе
+        - Другое
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Описание
+      description: Здесь опишите ресурс или проблему
+    validations:
+      required: true

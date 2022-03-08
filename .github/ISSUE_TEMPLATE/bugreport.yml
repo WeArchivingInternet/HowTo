@@ -1,0 +1,54 @@
+name: bugreport
+description: Если что-то не работает
+labels: 
+  - Баг
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Что не работает
+      description: Попытайтесь объяснить, что именно не работает
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Как повторить
+      description: |
+        Шаги для повторения проблемы:
+        
+        1. Перейти сюда '...'
+        2. Выполнить это '...'
+        3. Появляется ошибка
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes: 
+      label: Ожидаемое поведение
+      description: Опишите ожидаемое поведение
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Скриншоты
+      description: Если есть возможность приложить скриншоты - приложите их
+    validations:
+      required: false
+  - type: textarea
+    id: tech-info
+    attributes:
+      label: Техническая информация
+      value: |
+        - ОС
+        - Используемое ПО
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Дополнительная информация
+      description: Здесь можно описать дополнительную информацию
+    validations:
+      required: false
