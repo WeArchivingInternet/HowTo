@@ -17,3 +17,9 @@
 ### Документация
 * [The POSIX Shell And Utilities](http://shellhaters.org/)
 * [The archive for man pages](https://manned.org/)
+### Блоги
+* [binji's dustbin](https://binji.github.io/) 
+* [Amon's blog](https://fasterthanli.me/)
+* [Yumi Chan's blog](https://yumichan.net/)
+* [Заметки О выживании в мире технологий и творящемся вокруг киберпанке](https://vas3k.ru)
+* [joel on software](https://www.joelonsoftware.com/)
