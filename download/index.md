@@ -25,3 +25,22 @@ wget --mirror -p --convert-links -P . xyz.com
 ```sh
 wget -i файл_с_url
 ```
+
+## Массовая выгрузка репозиториев Github
+
+Позволяет через апи гитхаба выгрузить до 100 репозиториев за один запрос.
+
+Выгрузка репозиториев из организации, с рекурсивным парсом сабмодулей, глубиной до 8
+```sh
+GHORG=company; curl "https://api.github.com/orgs/$GHORG/repos?per_page=100" | grep -o 'git@[^"]*' | xargs -L1 git clone --recurse-submodules -j8
+```
+
+Выгрузка репозиториев пользователя по его имени, так же рекурсивно с глубиной до 8
+```sh
+GHUSER=CHANGEME; curl "https://api.github.com/users/$GHUSER/repos?per_page=100" | grep -o 'git@[^"]*' | xargs -L1 git clone --recurse-submodules -j8
+```
+
+Выгрузка приватных репозиториев из юзера при наличии токена
+```
+curl -s "https://api.github.com/users/$GHUSER/repos?access_token=$GITHUB_API_TOKEN&per_page=1000" | grep -w clone_url | grep -o '[^"]\+://.\+.git' | xargs -L1 git clone --recurse-submodules -j8
+```
