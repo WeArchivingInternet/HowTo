@@ -18,6 +18,8 @@
 ### Документация
 * [The POSIX Shell And Utilities](http://shellhaters.org/)
 * [The archive for man pages](https://manned.org/)
+### Инструкции
+* [Guide to Starting Your Own Website](http://landchad.net)
 ### Блоги
 * [binji's dustbin](https://binji.github.io/) 
 * [Amon's blog](https://fasterthanli.me/)
