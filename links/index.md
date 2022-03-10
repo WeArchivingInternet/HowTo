@@ -9,6 +9,7 @@
 
 ### Программирование
 * [Advanced Bash-Scripting Guide](https://tldp.org/LDP/abs/html/)
+* [Bash scripting cheatsheet](https://devhints.io/bash#conditionals)
 * [Writing OS in Rust](https://os.phil-opp.com/)
 * [Intel 80x86 Assembly Language OpCodes](http://www.mathemainzel.info/files/x86asmref.html)
 * [opengl tutorials](https://www.opengl-tutorial.org/)
