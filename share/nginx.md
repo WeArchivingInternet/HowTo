@@ -104,3 +104,65 @@ server {
         server_tokens off; ## Отключено отображение версии nginx на служебных страницах
 }
 ```
+
+## Кастомизация
+
+По умолчанию интерфейс листинга очень простой, но его можно изменить за счет модуля [ngx_http_xslt_module](https://nginx.org/ru/docs/http/ngx_http_xslt_module.html), который позволяет преобразовывать XML страницы по заданному шаблону.
+
+Для начала создадим директорию для этих шаблонов и перейдем в неё:
+
+```sh
+mkdir /var/www/xslt && cd /var/www/xslt
+```
+
+Далее необходимо скачать шаблон. Их можно найти в интернете. Для примера можно взять вот [этот](https://gist.github.com/wilhelmy/5a59b8eea26974a468c9) шаблон. Скачать его можно с помощью `wget`
+
+```sh
+wget https://gist.githubusercontent.com/wilhelmy/5a59b8eea26974a468c9/raw/00c657fec00da06c14f92a58f4ecffa123a41ae4/dirlist.xslt
+```
+
+После успешной загрузки перейдем к настройке конфигурационного файла. Из предыдушего примера можно вспомнить, что конфигурационный файл у нас находится по пути `/etc/nginx/sites-available/share`, поэтому открываем его с помощью любимого редактора и записываем следующее:
+
+```nginx
+server {
+        listen 80;
+        listen [::]:80;
+        root /var/www/share;
+        location / {
+                try_files $uri @autoindex;
+        }
+
+        location @autoindex{
+                autoindex on;
+                autoindex_exact_size off;
+
+                autoindex_format xml;
+                xslt_stylesheet /var/www/xslt/dirlist.xslt;
+                xslt_string_param path $uri;
+        }
+
+        server_tokens off;
+}
+```
+
+Перезапускаем сервер и смотрим на результат
+
+```sh
+systemctl restart nginx
+```
+
+![xslt](images/nginx-xslt-listing.png)
+
+## Ссылки на xslt конфигурации
+
+Помните, что xslt файлы могут загружать дополнительные стили, шрифты, иконки, __JS СКРИПТЫ__ обращаясь за файлами на внешние сервера.
+
+__ЭТО МОЖЕТ БЫТЬ ОПАСНО__
+
+Всегда проверяйте содержимое xslt файлов перед тем, как добавить их на сайт. Не добавляйте их бездумно 
+
+### Список
+
+- [wilhelmy/dirlist.xslt](https://gist.github.com/wilhelmy/5a59b8eea26974a468c9)
+- [jbox-web/nginx-index-template](https://github.com/jbox-web/nginx-index-template)
+- [abdus/nginx-pretty-index](https://github.com/abdus/nginx-pretty-index/)
