@@ -2,7 +2,20 @@
 
 [Официальный сайт](https://nginx.org/)
 
-Nginx (Engine-X) - высокопроизводительный web сервер. Для сохранения интернета он интересен своим модулем - [autoindex](https://nginx.org/ru/docs/http/ngx_http_autoindex_module.html), который позволяет выводить содержимое каталога и скачивать файлы оттуда. Собственно это как раз по теме раздачи файлов.
+Nginx (Engine-X) - высокопроизводительный web сервер. Для сохранения интернета он интересен своим модулем - [autoindex](https://nginx.org/ru/docs/http/ngx_http_autoindex_module.html), который позволяет выводить содержимое каталога и скачивать из него файлы. Собственно это как раз по теме раздачи файлов.
+
+# Предупреждение
+
+Раздача файлов в анонимных сетях может быть не безопасна. 
+
+__ВАША БЕЗОПАСНОСТЬ - ВАША ЗАБОТА__. 
+
+Поэтому старайтесь придерживаться следующих правил:
+
+- __ВКЛЮЧИТЕ ФАЙРВОЛЛ__ ([тык](https://github.com/WeArchivingInternet/HowTo/blob/main/share/yggdrasil.md#%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0))
+- __ОБНОВЛЯЙТЕСЬ__
+- __Не забывайте выставлять правильные права на файлы__
+- __Разворачивайте сервера в контейнерах или виртуальных машинах__
 
 ## Установка и настройка (Linux)
 
@@ -23,6 +36,13 @@ apt update; apt upgrade; apt install nginx -y; systemctl status nginx
 ```sh
 cd /etc/nginx/sites-enabled && rm -f *
 ```
+Также, желательно, создать отдельный каталог для хранения файлов под раздачу. В примере мы будем использовать каталог `/var/www/share`
+
+```sh
+# Создаем каталог
+mkdir /var/www/share
+```
+
 Далее вооружаемся любимым текстовым редактором и идем создавать новую конфигурацию. Для этого достаточно создать файл с любым именем по пути `/etc/nginx/sites-avaliable`. Для примера назовем его `share`. После создания прописываем туда следующие строки:
 
 ```nginx
@@ -44,7 +64,7 @@ server {
 Далее выходим из редактора и делаем символьную ссылку указывая nginx, что этот сайт должен быть активен
 
 ```sh
-ln -s /etc/nginx/sites-avaliable/share /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/share /etc/nginx/sites-enabled/
 ```
 
 Вот теперь можно перезапускать nginx и заходить через браузер на сервер
@@ -85,15 +105,64 @@ server {
 }
 ```
 
-# Предупреждение
+## Кастомизация
 
-Раздача файлов в анонимных сетях может быть не безопасна. 
+По умолчанию интерфейс листинга очень простой, но его можно изменить за счет модуля [ngx_http_xslt_module](https://nginx.org/ru/docs/http/ngx_http_xslt_module.html), который позволяет преобразовывать XML страницы по заданному шаблону.
 
-__ВАША БЕЗОПАСНОСТЬ - ВАША ЗАБОТА__. 
+Для начала создадим директорию для этих шаблонов и перейдем в неё:
 
-Поэтому старайтесь придерживаться следующих правил:
+```sh
+mkdir /var/www/xslt && cd /var/www/xslt
+```
 
-- __ВЛКЛЮЧИТЕ ФАЙРВОЛЛ__ ([тык](https://github.com/WeArchivingInternet/HowTo/blob/main/share/yggdrasil.md#%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0))
-- __ОБНОВЛЯЙТЕСЬ__
-- __Не забывайте выставлять правильные права на файлы__
-- __Разворачивайте сервера в контейнерах или виртуальных машинах__
+Далее необходимо скачать шаблон. Их можно найти в интернете. Для примера можно взять вот [этот](https://gist.github.com/wilhelmy/5a59b8eea26974a468c9) шаблон. Скачать его можно с помощью `wget`
+
+```sh
+wget https://gist.githubusercontent.com/wilhelmy/5a59b8eea26974a468c9/raw/00c657fec00da06c14f92a58f4ecffa123a41ae4/dirlist.xslt
+```
+
+После успешной загрузки перейдем к настройке конфигурационного файла. Из предыдушего примера можно вспомнить, что конфигурационный файл у нас находится по пути `/etc/nginx/sites-available/share`, поэтому открываем его с помощью любимого редактора и записываем следующее:
+
+```nginx
+server {
+        listen 80;
+        listen [::]:80;
+        root /var/www/share;
+        location / {
+                try_files $uri @autoindex;
+        }
+
+        location @autoindex{
+                autoindex on;
+                autoindex_exact_size off;
+
+                autoindex_format xml;
+                xslt_stylesheet /var/www/xslt/dirlist.xslt;
+                xslt_string_param path $uri;
+        }
+
+        server_tokens off;
+}
+```
+
+Перезапускаем сервер и смотрим на результат
+
+```sh
+systemctl restart nginx
+```
+
+![xslt](images/nginx-xslt-listing.png)
+
+## Ссылки на xslt конфигурации
+
+Помните, что xslt файлы могут загружать дополнительные стили, шрифты, иконки, __JS СКРИПТЫ__ обращаясь за файлами на внешние сервера.
+
+__ЭТО МОЖЕТ БЫТЬ ОПАСНО__
+
+Всегда проверяйте содержимое xslt файлов перед тем, как добавить их на сайт. Не добавляйте их бездумно 
+
+### Список
+
+- [wilhelmy/dirlist.xslt](https://gist.github.com/wilhelmy/5a59b8eea26974a468c9)
+- [jbox-web/nginx-index-template](https://github.com/jbox-web/nginx-index-template)
+- [abdus/nginx-pretty-index](https://github.com/abdus/nginx-pretty-index/)
