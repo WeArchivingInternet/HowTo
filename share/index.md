@@ -22,4 +22,5 @@ __ПО ВОЗМОЖНОСТИ:__
 * [BitTorrent](bittorrent.md)
 * [DC++](dcplusplus.md)
 * [yggdrasil](yggdrasil.md)
+* [nginx](nginx.md)
 

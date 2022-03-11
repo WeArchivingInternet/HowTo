@@ -22,7 +22,7 @@ Web клиент для работы с Direct Connect
 tar -xfv airdcpp_2.11.2_webui-2.11.2_64-bit_portable.tar.gz ~/
 ```
 
-Далее переходим в каталог `airdcpp` и запускаем конфигурацию `aitdcppd`
+Далее переходим в каталог `airdcpp` и запускаем конфигурацию `airdcppd`
 
 ```sh
 ~/airdcppd --configure
@@ -60,7 +60,7 @@ Cледуем инструкциям. Порт можно оставить по 
 
 ![airdcpp_web](./images/airdcpp-web-hub-download-settings.jpeg)
 
-Теперь можно приступить к использованию aitDC++. Для этого нам нужно добавить hub. Для управления hab'ами, с правой стороны, есть кнопка Hubs. 
+Теперь можно приступить к использованию airdc++. Для этого нам нужно добавить hub. Для управления hab'ами, с правой стороны, есть кнопка Hubs. 
 
 ![airdcpp_web](./images/airdcpp-web-hubs-setup.jpeg)
 
