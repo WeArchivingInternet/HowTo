@@ -7,3 +7,6 @@
  
 * Python
   * [Скачивание PyPI с помощью bandersnatch](pypi.md)
+
+* Docker
+  * [Скачивание выборочных образов с docker hub](dockerRegistry.md)
