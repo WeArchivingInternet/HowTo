@@ -15,6 +15,7 @@
   - Неофициальный список документации/фидов/cheatsheets которые были созданы пользователями - [раз](https://zealusercontributions.vercel.app/), [два](https://zealusercontributions.now.sh) 
 * [Kiwix - вики-ресурсы оффлайн](https://www.kiwix.org/en/)
 * [Gitea, есть возможность зеркалировать репозитории](https://gitea.io/ru-ru/)
+* [yt-dlp - скачивание видео с YouTube](https://github.com/yt-dlp/yt-dlp)
 
 ## Категории
 * [Раздача ресурсов](share/index.md)
