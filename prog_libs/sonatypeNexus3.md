@@ -5,6 +5,7 @@
 * [Вступление](#вступление)
 * [Разворачиваем репозиторий](#разворачиваем-репозиторий)
 * [Настраиваем pip proxy](#настраиваем-pip-proxy)
+* [Настраиваем docker proxy](#настраиваем-docker-proxy)
 ---
 
 ### Вступление
@@ -86,3 +87,57 @@ pip install requests
 ```
 Если всё прошло хорошо, то мы увидим, что наши пакеты были сохранены в нашем репозитории:  
 ![pypiPacketsList](images/nexus3PypiPacketsList.png)
+
+### Настраиваем docker proxy
+
+Идём в **настройки(шестерёнка), Repository, Repositories**:  
+![nexus repository location](images/nexus3RepositoriesLocation.png)  
+**Create repository** и выбираем **docker (proxy)**.  
+
+Задаём любое желаемое имя, пишем в пункте **HTTP** 7719. По этому порту мы будем подключаться в прокси.
+В **Remote Storage** пишем `https://registry.hub.docker.com`  
+В **Docker Index** выбираем `Use Docker Hub`  
+**Maximum Component age**: `-1`  
+Тыкаем кнопку **Create Repository**.
+
+Далее необходимо указать в файле `/etc/docker/daemon.json` дополнительный пункт в конфигурации:  
+```json
+{
+  "registry-mirrors": [
+    "http://localhost:7719"
+  ]
+}
+```
+В моём случае мой **daemon.json** выглядит следующим образом:
+```json
+{
+  "runtimes": {
+    "nvidia": {
+      "path": "nvidia-container-runtime",
+      "runtimeArgs": []
+    }
+  },
+  "registry-mirrors": [
+    "http://localhost:7719"
+  ]
+}
+```
+
+Выключаем nexus нежным `Ctrl+C` в терминале, ждём, когда он выключится.  
+**Проверьте, что все ваши докер контейнеры так же выключены!**  
+Вводим следующую команду в терминале от имени рута:
+```bash
+systemctl daemon-reload && systemctl restart docker
+```
+Не забудьте в файле **docker-compose.yml** добавить в пункт **ports** следующую строку:
+```yaml
+- 127.0.0.1:7719:7719
+```
+Запускаем nexus и радуемся.
+Стягивать образы через проксю можно следующим образом:
+
+```bash
+docker pull localhost:7719/centos
+```
+Если всё было сделано правильно, то у вас в списке докер образов появится новый пункт.  
+Если не заработает, то создайте issue - разберёмся.  
