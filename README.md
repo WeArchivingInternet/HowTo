@@ -18,15 +18,15 @@
 * [yt-dlp - скачивание видео с YouTube](https://github.com/yt-dlp/yt-dlp)
 
 ## Категории
-* [Раздача ресурсов](share)
-* [Скачивание вебсайтов](download)
-* [Wiki-ресурсы](wiki)
-* [Операционные системы и их репозитории](os)
-* [Библиотеки для языков программирования](prog_libs)
+* [Раздача ресурсов](share/README.md)
+* [Скачивание вебсайтов](download/README.md)
+* [Wiki-ресурсы](wiki/README.md)
+* [Операционные системы и их репозитории](os/README.md)
+* [Библиотеки для языков программирования](prog_libs/README.md)
 * OS Android
-  * [FDroid](android/fdroid)
-* [Git](git)
-* [Полезные ссылки](links)
+  * [FDroid](android/fdroid/README.md)
+* [Git](git/README.md)
+* [Полезные ссылки](links/README.md)
 
 ## Отказ от ответственности
 Используя материалы данного репозитория вы подтверждаете данный отказ от ответственности.
