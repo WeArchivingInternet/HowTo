@@ -10,3 +10,6 @@
 
 * Docker
   * [Скачивание выборочных образов с docker hub](dockerRegistry.md)
+
+* Sonatype Nexus3
+  * [Настройка локального репозитория Nexux3](sonatypeNexus3.md)
