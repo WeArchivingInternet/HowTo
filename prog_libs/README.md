@@ -8,6 +8,9 @@
 * Python
   * [Скачивание PyPI с помощью bandersnatch](pypi.md)
 
+* Rust
+  * [Зеркалирование известных пакетов из cargo.io](cargoBareMinimum.md)
+
 * Docker
   * [Скачивание выборочных образов с docker hub](dockerRegistry.md)
 
