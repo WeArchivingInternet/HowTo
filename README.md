@@ -16,6 +16,7 @@
 * [Kiwix - вики-ресурсы оффлайн](https://www.kiwix.org/en/)
 * [Gitea, есть возможность зеркалировать репозитории](https://gitea.io/ru-ru/)
 * [yt-dlp - скачивание видео с YouTube](https://github.com/yt-dlp/yt-dlp)
+* [RatBrowser - инструкция по настройке браузера, автоматически сохраняющего посещённые страницы](https://ratbrowser.com)
 
 ## Категории
 * [Раздача ресурсов](share/README.md)
